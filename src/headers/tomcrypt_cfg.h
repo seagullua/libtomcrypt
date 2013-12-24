@@ -74,7 +74,7 @@ LTC_EXPORT int   LTC_CALL XSTRCMP(const char *s1, const char *s2);
    #define ENDIAN_LITTLE
    #define ENDIAN_64BITWORD
    #define LTC_FAST
-   #define LTC_FAST_TYPE    unsigned long
+   #define LTC_FAST_TYPE    unsigned long long
 #endif
 
 /* detect PPC32 */
@@ -111,7 +111,7 @@ LTC_EXPORT int   LTC_CALL XSTRCMP(const char *s1, const char *s2);
    #undef LTC_FAST
    #undef LTC_FAST_TYPE
    #define LTC_NO_ROLC
-	#define LTC_NO_BSWAP
+   #define LTC_NO_BSWAP
 #endif
 
 /* #define ENDIAN_LITTLE */
