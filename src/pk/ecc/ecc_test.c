@@ -19,7 +19,7 @@
 /**
   @file ecc_test.c
   ECC Crypto, Tom St Denis
-*/  
+*/
 
 #ifdef LTC_MECC
 
@@ -47,7 +47,7 @@ int ecc_test(void)
    }
 
    for (i = 0; ltc_ecc_sets[i].size; i++) {
-       #if 0
+       #ifdef LTC_ECC_TEST_DBG
           printf("Testing %d\n", ltc_ecc_sets[i].size);
        #endif
        if ((err = mp_read_radix(modulus, (char *)ltc_ecc_sets[i].prime, 16)) != CRYPT_OK)   { goto done; }
@@ -57,6 +57,9 @@ int ecc_test(void)
        if ((err = mp_prime_is_prime(modulus, 8, &primality)) != CRYPT_OK)                   { goto done; }
        if (primality == 0) {
           err = CRYPT_FAIL_TESTVECTOR;
+          #ifdef LTC_ECC_TEST_DBG
+             printf("prime is not prime\n");
+          #endif
           goto done;
        }
 
@@ -64,6 +67,9 @@ int ecc_test(void)
        if ((err = mp_prime_is_prime(order, 8, &primality)) != CRYPT_OK)                     { goto done; }
        if (primality == 0) {
           err = CRYPT_FAIL_TESTVECTOR;
+          #ifdef LTC_ECC_TEST_DBG
+             printf("order is not prime\n");
+          #endif
           goto done;
        }
 
@@ -76,6 +82,13 @@ int ecc_test(void)
        if ((err = ltc_mp.ecc_ptmul(order, G, GG, modulus, 1)) != CRYPT_OK)                  { goto done; }
        if (mp_cmp(G->x, GG->x) != LTC_MP_EQ || mp_cmp(G->y, GG->y) != LTC_MP_EQ) {
           err = CRYPT_FAIL_TESTVECTOR;
+          #ifdef LTC_ECC_TEST_DBG
+             printf("G != (order + 1)G\n");
+             if(mp_cmp(G->x, GG->x) != LTC_MP_EQ)
+               printf("G->x != GG->x\n");
+             if(mp_cmp(G->y, GG->y) != LTC_MP_EQ)
+               printf("G->y != GG->y\n");
+          #endif
           goto done;
        }
    }
