@@ -16,6 +16,7 @@ env:
   - BUILDSCRIPT="run.sh"        BUILDNAME="NO_ASM"                      BUILDOPTIONS="-DLTC_NO_ASM"
   - BUILDSCRIPT="testbuild.sh"  BUILDNAME="NOTEST"                      BUILDOPTIONS="-DLTC_NO_TEST"
   - BUILDSCRIPT="testbuild.sh"  BUILDNAME="NOFILE"                      BUILDOPTIONS="-DLTC_NO_FILE"
+  - BUILDSCRIPT="coverage.sh"   BUILDNAME="COVERAGE"                    BUILDOPTIONS=" "
 matrix:
   fast_finish: true
 branches:
@@ -23,6 +24,7 @@ branches:
     - develop
 before_script:
   - sudo apt-get install libtommath-dev
+  - sudo pip install cpp-coveralls
 after_failure:
   - cat test_std.txt
   - cat test_err.txt
