@@ -6,14 +6,14 @@
 
 #ifndef TOMCRYPT_CFG_H
 #define TOMCRYPT_CFG_H
-
-#if defined(_WIN32) || defined(_MSC_VER)
-#define LTC_CALL __cdecl
-#else
+#pragma warning ( disable : 4273 )
+//#if defined(_WIN32) || defined(_MSC_VER)
+//#define LTC_CALL __cdecl
+//#else
 #ifndef LTC_CALL
    #define LTC_CALL
 #endif
-#endif
+//#endif
 
 #ifndef LTC_EXPORT
 #define LTC_EXPORT
