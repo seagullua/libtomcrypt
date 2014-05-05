@@ -7,7 +7,7 @@ LOCAL_MODULE := libtomcrypt_static
 LOCAL_MODULE_FILENAME := libtomcryptlib
 
 LOCAL_SRC_FILES := \
-src/ciphers/aes/aes.c src/ciphers/anubis.c src/ciphers/blowfish.c \
+src/prngs/fortuna.c src/ciphers/aes/aes.c src/ciphers/anubis.c src/ciphers/blowfish.c \
 src/ciphers/cast5.c src/ciphers/des.c src/ciphers/kasumi.c src/ciphers/khazad.c src/ciphers/kseed.c \
 src/ciphers/noekeon.c src/ciphers/rc2.c src/ciphers/rc5.c src/ciphers/rc6.c src/ciphers/safer/safer.c \
 src/ciphers/safer/safer_tab.c src/ciphers/safer/saferp.c src/ciphers/skipjack.c \
